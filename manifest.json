@@ -1,0 +1,20 @@
+{
+  "manifest_version": 3,
+  "name": "Gmail Addict",
+  "version": "1.0",
+  "description": "Redirect from Gmail to another URL",
+  "permissions": ["activeTab", "tabs","webNavigation", "scripting"],
+
+  "background": {
+    "service_worker": "background.js"
+  },
+  
+  "content_scripts":[
+    {
+        "matches":["*://mail.google.com/*"],
+        "js":["content.js"],
+        "css":["gmailaddict.css"],
+        "run_at":"document_start"
+    }
+  ]
+}

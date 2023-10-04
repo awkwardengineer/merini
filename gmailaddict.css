@@ -1,0 +1,27 @@
+/*
+*
+*
+*
+* .bsU - label counts
+* .XU - badge count
+* .aeF - Inbox Area
+* .Nr.UI.S2.vy - Inbox List
+* .aKh - Priority Buttons
+*
+*/ 
+
+.XU,
+.aeF,
+.aKh {
+    visibility: hidden;
+}
+
+/* Inbox label unread count */
+.wT > div:first-child > .byl:first-child .aim:first-child .bsU {
+  opacity: 0;
+}
+
+
+
+/*.Nr.UI.S2.vy,*/
+/*.Nr.UI.S2.vy,*/
