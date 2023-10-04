@@ -1,8 +1,8 @@
 {
   "manifest_version": 3,
-  "name": "Gmail Addict",
+  "name": "Merini",
   "version": "1.0",
-  "description": "Redirect from Gmail to another URL",
+  "description": "Daily deliverance of the things you only need once a day.",
   "permissions": ["activeTab", "tabs","webNavigation", "scripting"],
 
   "background": {
