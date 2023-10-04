@@ -10,7 +10,6 @@ const formattedDate = `${year}-${month}-${day}`;
 const gmailQuery = `before:${formattedDate} in:inbox`
 
 
-
 //const InboxArea = '.aeF';
 //const InboxLink = '.wT > div:first-child > .byl:first-child .aim';
 
@@ -85,64 +84,6 @@ init = ()=>{
       },20);
     }
 
-
-
   },20);
 
 }
-
-
-
-
-/*
-showAfterDelay = ()=>{
-  setTimeout(()=>{
-    console.log("show it!");
-    document.querySelector(InboxArea).style.visibility='visible';
-  },1000)
-};
-
-
-
-afterInitialLoading = ()=>{
-
-  console.log('after idle');
- 
-  const link = document.querySelector(InboxLink);
-  const linkObserver = new MutationObserver();
-  linkObserver.observer(link,{childList:true});
-
-  const onLinkChildChange = (mutationList, observer)=>{
-
-  }
-  
-  console.log(link);
-
-  link.onclick = ()=>{
-    document.querySelector(InboxArea).style.visibility='hidden';
-    console.log('on click hidden');
-  };
-
-  window.addEventListener("hashchange", ()=>{
-    const hash = window.location.hash.split('/')[0];
-    
-    if (hash === '#search'){
-      requestIdleCallback(()=>{
-        showAfterDelay();
-      })
-    } 
-  });
-
-  const watchInboxLink = querySelector(InboxLink)
-
-  showAfterDelay();
-}
-
-
-requestIdleCallback(()=>{
-  setTimeout(
-    afterInitialLoading,
-    1500
-  )
-});
-*/
