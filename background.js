@@ -22,16 +22,22 @@ chrome.tabs.onUpdated.addListener(function (tabId, changeInfo, tab) {
         console.log(`new url:${newUrl}`);
         
         if (newUrl.startsWith('https://mail.google.com/mail/u/0/#inbox')) {
-        // Change the URL of the tab to a new URL
-        const newTabUrl = `https://mail.google.com/mail/u/0/#search/${gmailQuery}`;
+            // Change the URL of the tab to a new URL
+            const newTabUrl = `https://mail.google.com/mail/u/0/#search/${gmailQuery}`;
 
-        chrome.tabs.update(tabId, { url: newTabUrl });
+            chrome.tabs.update(tabId, { url: newTabUrl });
         }
         else if (newUrl === 'https://www.nytimes.com/'){
-            chrome.tabs.update(tabId)='www.nytimes.com/section/todayspaper';
+            const newTabUrl = `https://www.nytimes.com/section/todayspaper`;
+
+            chrome.tabs.update(tabId, { url: newTabUrl });
+        }
+        else if (newUrl === 'https://news.ycombinator.com/'){
+            const newTabUrl = `https://news.ycombinator.com/front`;
+
+            chrome.tabs.update(tabId, { url: newTabUrl });
         }
     }
-
     
 });
 
