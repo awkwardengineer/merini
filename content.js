@@ -20,30 +20,14 @@ const detectInboxLink = ()=>{
     const inboxLinkElement = document.querySelector('.wT > div:first-child > .byl:first-child .aim');
     const linkContainerElement = document.querySelector('.TK');
 
-    //gmail upates the inbox link (i think with the number of messages), removes it, and reattaches it
-    //so the MutationObserver watches for that behavior and makes sure to reattach the onclick handler
-    const observer = new MutationObserver((mutationList,observer)=>{
-      observer.disconnect();
-      console.log(mutationList);
-      console.log('inbox link mutation found, calling detection again');
-      detectInboxLink();
-    });
+    if (linkContainerElement){
+      clearInterval(inboxLinkPoller);
+      console.log('inbox link container exists');
+      console.log(linkContainerElement);
 
-
-    if (inboxLinkElement){
-      if (inboxLinkElement.hasChildNodes()){
-
-        clearInterval(inboxLinkPoller);
-        console.log('inbox link exists, has nodes');
-        console.log(inboxLinkElement);
-        console.log(linkContainerElement);
-
-        hideInboxOnClick(inboxLinkElement);
-
-        observer.observe(linkContainerElement, {childList:true, subtree:false, attributes:false});
-      }
+      hideInboxOnClick(linkContainerElement);
     }
-
+    
   },20);
 
 };
@@ -53,7 +37,7 @@ detectSearchBar = ()=>{
   searchBarPoller = setInterval(()=>{
     console.log('polling for search bar')
     
-    const searchToolBar = document.querySelector('.Th');
+    const searchToolBar = document.querySelector('.a5E');
 
     if (searchToolBar){
       clearInterval(searchBarPoller);
