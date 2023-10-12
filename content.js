@@ -25,7 +25,9 @@ const detectInboxLink = ()=>{
       console.log('inbox link container exists');
       console.log(linkContainerElement);
 
+      // after the link is detected, we can initiate some other things
       hideInboxOnClick(linkContainerElement);
+      listenForSearchEvent();
     }
     
   },20);
@@ -35,26 +37,24 @@ const detectInboxLink = ()=>{
 detectSearchBar = ()=>{
 
   searchBarPoller = setInterval(()=>{
-    console.log('polling for search bar')
-    
-    const searchToolBar = document.querySelector('.a5E');
+   
+    // on the initial load, there is only one toolbar
+    // on subsequent updates, I think gmail renders a second one, and removes/hides the first
+    const searchToolBars = document.querySelectorAll('.a5E');
 
-    if (searchToolBar){
-      clearInterval(searchBarPoller);
-/*
-      pollVisibility = setInterval(()=>{
-        console.log('polling for searchbar visibility');
 
-        if (searchToolBar.checkVisibility()){
-          clearInterval(pollVisibility);
-          console.log("search bar visibile");
+    if (searchToolBars.length >= 1){
 
-          showInbox();
+      const searchToolBar = searchToolBars[searchToolBars.length-1];
+      console.log('polling for searchbar visibility');
 
-        }
+      if (searchToolBar.checkVisibility()){
+        clearInterval(searchBarPoller);
+       // console.log("search bar visibile");
 
-      },20);
-*/  showInbox();
+        showInbox();
+
+      }
 
     }
   },20);
@@ -69,21 +69,43 @@ const hideInboxOnClick = (element)=>{
 };
 
 const hideInbox = ()=>{
-  document.querySelector('.aeF').style.visibility='hidden';
+  inboxes = document.querySelectorAll('.Nr.UI.S2.vy');
+
+  console.log(inboxes);
+
+  inboxes.forEach((inbox)=>{
+    inbox.style.visibility='hidden';
+  })
+
   console.log('hidden');
   detectSearchBar();
 };
 
 const showInbox = ()=>{
- 
-  //even when the search bar is logically computed as visibile, the inbox is still seen for a split second
-  //before the search results are shown. a brief delay fixes that.
-  setTimeout(()=>{
-    document.querySelector('.aeF').style.visibility='visible';
-    console.log('shown');
-  },500)
+  //gmail keeps appending inboxes and i think removing earlier ones
+  //so we need to make sure the last one added to the list is visibile
+  inboxes = document.querySelectorAll('.Nr.UI.S2.vy');
+
+  //console.log(inboxes);
+
+  const inbox = inboxes[inboxes.length-1];
+  inbox.style.visibility = 'visible';
+  
+  console.log('shown');
 
 };
+
+const listenForSearchEvent = ()=> {
+  window.onhashchange = ()=>{
+    console.log('hash change');
+
+    const currentHash = window.location.hash;
+    if (currentHash.includes("search")){
+      showInbox();
+    }
+  };
+};
+
 
 detectInboxLink();
 detectSearchBar();
