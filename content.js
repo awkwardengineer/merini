@@ -41,11 +41,11 @@ detectSearchBar = ()=>{
 
     if (searchToolBar){
       clearInterval(searchBarPoller);
-
+/*
       pollVisibility = setInterval(()=>{
         console.log('polling for searchbar visibility');
 
-        if (searchToolBar.checkVisibility){
+        if (searchToolBar.checkVisibility()){
           clearInterval(pollVisibility);
           console.log("search bar visibile");
 
@@ -54,6 +54,8 @@ detectSearchBar = ()=>{
         }
 
       },20);
+*/  showInbox();
+
     }
   },20);
 }
