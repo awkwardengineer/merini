@@ -36,7 +36,7 @@ const detectInboxLink = ()=>{
 
 detectSearchBar = ()=>{
 
-  searchBarPoller = setInterval(()=>{
+  const searchBarPoller = setInterval(()=>{
    
     // on the initial load, there is only one toolbar
     // on subsequent updates, I think gmail renders a second one, and removes/hides the first
@@ -50,7 +50,7 @@ detectSearchBar = ()=>{
 
       if (searchToolBar.checkVisibility()){
         clearInterval(searchBarPoller);
-       // console.log("search bar visibile");
+        console.log("search bar visibile");
 
         showInbox();
 
@@ -78,7 +78,7 @@ const hideInbox = ()=>{
   })
 
   console.log('hidden');
-  detectSearchBar();
+  //detectSearchBar();
 };
 
 const showInbox = ()=>{
@@ -97,15 +97,26 @@ const showInbox = ()=>{
 
 const listenForSearchEvent = ()=> {
   window.onhashchange = ()=>{
-    console.log('hash change');
 
     const currentHash = window.location.hash;
-    if (currentHash.includes("search")){
-      showInbox();
+    
+    console.log('hash change '+ currentHash );
+   
+    if (!currentHash.startsWith('#inbox')){
+      console.log('non-inbox hash change');
+
+      const pieces = currentHash.split('/');
+      console.log(pieces);
+
+      if(pieces.length < 3){
+        // the "/" symbol only appears in the hash when reading an individual message
+        // no need to detect the search bar then
+        console.log("hash has one or no slash, initiating search");
+        detectSearchBar(); 
+      }
     }
   };
 };
 
 
 detectInboxLink();
-detectSearchBar();
