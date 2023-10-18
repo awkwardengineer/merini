@@ -1,8 +1,8 @@
 {
   "manifest_version": 3,
   "name": "Merini",
-  "version": "1.0",
-  "description": "Daily deliverance of the things you only need once a day.",
+  "version": "0.1.0",
+  "description": "Gmail, Hackernews, and the NY Times, updated once a day.",
   "permissions": ["activeTab", "tabs","webNavigation", "scripting"],
 
   "background": {
