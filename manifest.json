@@ -16,5 +16,12 @@
         "css":["gmailaddict.css"],
         "run_at":"document_start"
     }
-  ]
+  ],
+
+  "icons":{
+    "16":"images/merini16.png",
+    "32":"images/merini32.png",
+    "48":"images/merini48.png",
+    "128":"images/merini128.png"
+  }
 }
