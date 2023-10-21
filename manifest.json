@@ -3,7 +3,7 @@
   "name": "The Daily Delivery",
   "version": "0.1.0",
   "description": "Gmail, Hackernews, and the NY Times, updated once a day.",
-  "permissions": ["activeTab", "tabs","webNavigation", "scripting"],
+  "permissions": ["activeTab", "tabs"],
 
   "background": {
     "service_worker": "background.js"
