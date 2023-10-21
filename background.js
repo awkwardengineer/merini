@@ -11,7 +11,7 @@ chrome.tabs.onUpdated.addListener(function (tabId, changeInfo, tab) {
 
     const formattedDate = `${year}-${month}-${day}`;
 
-    const gmailQuery = encodeURIComponent(`before:${formattedDate}+in:inbox`);
+    const gmailQuery = encodeURIComponent(`before:${formattedDate}+category:primary`);
 
     console.log(gmailQuery);
 
