@@ -1,7 +1,7 @@
 {
   "manifest_version": 3,
   "name": "The Daily Delivery",
-  "version": "0.1.1",
+  "version": "0.2.0",
   "description": "Gmail, Hackernews, and the NY Times, updated once a day.",
   "permissions": ["tabs"],
 

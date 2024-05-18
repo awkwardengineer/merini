@@ -3,15 +3,17 @@
 // Listener for tab updates
 chrome.tabs.onUpdated.addListener(function (tabId, changeInfo, tab) {
 
-    const today = new Date();
-
+    let today = new Date();
+    today.setHours(12,0,0,0);
+    let epochAtNoon = Math.floor(today.getTime()/1000);
+/*
     const year = today.getFullYear();
     const month = String(today.getMonth() + 1).padStart(2, '0'); // Months are zero-indexed, so add 1 and pad with '0'
     const day = String(today.getDate()).padStart(2, '0'); // Pad with '0' if the day is a single digit
 
     const formattedDate = `${year}-${month}-${day}`;
-
-    const gmailQuery = encodeURIComponent(`before:${formattedDate}+in:inbox`);
+*/
+    const gmailQuery = encodeURIComponent(`before:${epochAtNoon}+in:inbox`);
 
     console.log(gmailQuery);
 
